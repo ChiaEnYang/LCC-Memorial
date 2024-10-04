@@ -3,7 +3,7 @@
 
 <template>
     
-    <footer class="info w-screen h-auto p-20 display: flex flex-wrap justify-around items-center bg-[url('/src/img/mountain.png')] bg-cover bg-/[.06]">
+    <footer class="info w-full h-auto p-20 flex flex-wrap justify-around items-center bg-[url('/src/img/mountain.png')] bg-cover bg-/[.06]">
         <div class="map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.8676070038923!2d120.67096857501495!3d24.141287178405673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d0cf25b4517%3A0xc6a3c93dc5084762!2z5p6X5LmL5Yqp57SA5b-16aSo!5e0!3m2!1szh-TW!2stw!4v1728008463834!5m2!1szh-TW!2stw"

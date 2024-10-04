@@ -18,11 +18,4 @@ export default {
     <about />
     <info />
   </main>
-  <footer class="container mx-auto pt-20">
-    
-    <info />
-  </footer>
-
-
-
 </template>
