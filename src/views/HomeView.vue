@@ -1,18 +1,21 @@
 <script>
 import banner from "@/components/banner.vue";
 import info from "@/components/info.vue";
+import about from "@/components/aboutCards.vue";
 
 export default {
   components: {
     banner,
+    about,
     info
   }
 }
 </script>
 
-<template>
+<template >
   <main class="container mx-auto pt-20">
     <banner />
+    <about />
   </main>
   <footer class="container mx-auto pt-20">    
     <info />
