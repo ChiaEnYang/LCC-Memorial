@@ -102,10 +102,11 @@ export default {
 
             <!-- text area -->
             <transition name="fade" mode="out-in">
-                <div v-if="data.show" @click="data.show = !data.show"
-                    class="h-full font-bold whitespace-pre-line break-all">
-                    <h3 class="font-bold">{{ data.title }}</h3>
-                    <p>{{ data.content }}</p>
+                <div v-if="this.activeIndex === index"
+                @click="data.show = !data.show"
+                    class="h-full">
+                    <h3 class="text-xl font-bold">{{ data.title }}</h3>
+                    <p class="whitespace-pre-line break-all">{{ data.content }}</p>
                 </div>
             </transition>
 
