@@ -4,16 +4,17 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
 
-  <nav class="fixed w-full h-[100px] flex justify-center p-5 bg-white opacity-70">
-
+  <nav class="fixed w-full h-[100px] flex justify-center p-5 bg-white opacity-70 z-20 ">
     <RouterLink to="/">
-      <img src="/src/img/logo.png" alt="" class="min-w-48 h-10 shrink-0">
+      <img src="/src/img/logo.png" alt="" class="min-w-48 h-10 shrink-0 z-20">
     </RouterLink>
   </nav>
     <RouterView />
 </template>
 
 <style scoped>
+
+
 
 
 nav a.router-link-exact-active {
