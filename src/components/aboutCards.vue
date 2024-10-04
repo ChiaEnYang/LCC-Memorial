@@ -106,6 +106,6 @@ export default {
 .expand-enter-to,
 .expand-leave-from {
     width: 75%;
-    overflow: auto;
+    overflow: hidden;
 }
 </style>

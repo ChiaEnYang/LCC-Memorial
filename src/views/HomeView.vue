@@ -17,7 +17,7 @@ export default {
     <banner />
     <about />
   </main>
-  <footer class="container mx-auto pt-20">    
+  <footer>    
     <info />
   </footer>
 
