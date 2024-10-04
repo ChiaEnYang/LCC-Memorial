@@ -3,6 +3,7 @@
 export default {
     data() {
         return {
+            activeIndex: null,
             introduction: [
                 {
                     title: '紀念館歷史',
@@ -67,17 +68,15 @@ export default {
 <template>
 
     <section class="w-full h-[400px] flex flex-row">
-        <!-- 每張卡片 -->
+        <!-- 迴圈產生每張卡片 -->
         <div v-for="data in introduction" :key="data.index" class="h-full rounded-md overflow-hidden flex p-3"
             :class="data.show ? 'w-3/4' : 'flex-1'">
 
             <!-- 卡片中的圖片+標題 -->
-            <div @click="data.show = !data.show" :style="{ backgroundImage: 'url(' + data.img + ')' }"
-                class="h-full grow min-w-64 bg-center bg-cover rounded-md overflow-hidden">
+            <div @click="data.show = !data.show"
+                class="h-full grow min-w-64 bg-[url('/src/img/lcc-profile-bk.png')] bg-cover bg-center overflow-hidden border border-black border-dashed">
                 <h3 class="font-bold">{{ data.title }}</h3>
             </div>
-
-
 
             <!-- text area -->
             <transition name="expand" mode="out-in">
@@ -89,23 +88,44 @@ export default {
 
         </div>
     </section>
+
+    <!-- 卡片區 -->
+    <section class="mb-3 w-full h-[500px] grid gap-4 md:grid-cols-9 sm:grid-cols-1">
+        <!-- 迴圈產生每張卡片(背景圖片=筆刷圖) -->
+        <div v-for="data,index in introduction" :key="index"
+        class="h-full bg-[url('/src/img/lcc-profile-bk.png')] bg-cover bg-center col-span-3 px-3 content-center border border-black border-dashed"
+        :class="()=> {if(this.activeIndex){this.activeIndex === index ? 'col-span-7' : 'col-span-1'}}"
+        @click="this.activeIndex = index">
+
+            <!-- 卡片中的標題 -->
+            <h3 class="text-xl font-bold text-center">{{ data.title }}</h3>
+
+            <!-- text area -->
+            <transition name="fade" mode="out-in">
+                <div v-if="data.show" @click="data.show = !data.show"
+                    class="h-full font-bold whitespace-pre-line break-all">
+                    <h3 class="font-bold">{{ data.title }}</h3>
+                    <p>{{ data.content }}</p>
+                </div>
+            </transition>
+
+        </div>
+    </section>
 </template>
 
 <style>
-.expand-enter-active,
-.expand-leave-active {
-    transition: 0.5s;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
 }
 
-.expand-enter-from,
-.expand-leave-to {
-    width: 0;
-    overflow: hidden;
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 
-.expand-enter-to,
-.expand-leave-from {
-    width: 75%;
-    overflow: hidden;
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
 }
 </style>
