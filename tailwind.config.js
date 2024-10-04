@@ -11,8 +11,8 @@ export default {
       },
       keyframes: {
         navUp: {
-          '0%': { height: '100vh' },
-          '100%': { height: '100px' },
+          '0%': { height: '100vh' , backgroundColor: 'rgba(29, 90, 83, 1)'},
+          '100%': { height: '100px', backgroundColor: 'rgba(29, 90, 83, 0.7)' },
         },
       },
     },

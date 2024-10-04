@@ -3,6 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .h-calc {
+    height: calc(100vh - 100px);
+  }
+}
+
 #app {
   margin-left: auto;
   margin-right: auto;
