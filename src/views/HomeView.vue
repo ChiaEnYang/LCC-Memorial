@@ -1,33 +1,22 @@
 <script>
 import banner from "@/components/banner.vue";
-<<<<<<< Updated upstream
 import info from "@/components/info.vue";
+import about from "@/components/aboutCards.vue";
 
 export default {
   components: {
     banner,
+    about,
     info
   }
-=======
-import about from "@/components/aboutCards.vue";
-
-export default {
-    components: {
-      banner,
-      about
-    }
->>>>>>> Stashed changes
 }
 </script>
 
 <template >
   <main class="container mx-auto pt-20">
     <banner />
-<<<<<<< Updated upstream
-    <info />
-=======
     <about />
->>>>>>> Stashed changes
+    <info />
   </main>
   <footer class="container mx-auto pt-20">
     
