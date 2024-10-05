@@ -93,9 +93,10 @@ export default {
     <section class="mb-3 w-full h-[500px] grid gap-4 md:grid-cols-9 sm:grid-cols-1">
         <!-- 迴圈產生每張卡片(背景圖片=筆刷圖) -->
         <div v-for="data,index in introduction" :key="index"
-        class="h-full bg-[url('/src/img/lcc-profile-bk.png')] bg-cover bg-center col-span-3 px-3 content-center border border-black border-dashed"
+        class="h-full col-span-3 px-3 content-center border border-black border-dashed"
         :class="()=> {if(this.activeIndex){this.activeIndex === index ? 'col-span-7' : 'col-span-1'}}"
         @click="this.activeIndex = index">
+        <img src="/src/img/lcc-profile-bk-straight-clip.png" alt="bg-block" class="w-full h-[500px] absolute inset-0">
 
             <!-- 卡片中的標題 -->
             <h3 class="text-xl font-bold text-center">{{ data.title }}</h3>
