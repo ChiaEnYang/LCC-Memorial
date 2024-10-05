@@ -1,13 +1,14 @@
 <script>
 import banner from "@/components/banner.vue";
+import AboutCards from "@/components/aboutCards.vue";
 import info from "@/components/info.vue";
-import about from "@/components/aboutCards.vue";
 import model from "@/components/model.vue";
+import AboutCards from "@/components/aboutCards.vue";
 
 export default {
   components: {
     banner,
-    about,
+    AboutCards,
     info,
     model
   }
@@ -17,10 +18,10 @@ export default {
 <template >
   <main class="container mx-auto pt-20">
     <banner />
-    <about />
+    <AboutCards />
     <model />
   </main>
-  <footer>    
+  <footer>
     <info />
   </footer>
 
