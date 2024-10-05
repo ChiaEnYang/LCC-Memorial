@@ -3,15 +3,20 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <nav class="fixed w-full flex justify-center p-5 bg-white opacity-70">
+
+  <nav class="fixed w-full h-[100px] flex justify-center p-5 bg-[#1d5a53]  z-20 animate-nav-up">
     <RouterLink to="/">
-      <img src="/src/img/logo.png" alt="" class="min-w-48 h-10 shrink-0">
+      <img src="/src/img/logo.png" alt="" class="min-w-48 h-10 shrink-0 z-20">
     </RouterLink>
   </nav>
-  <RouterView />
+    <RouterView />
 </template>
 
 <style scoped>
+
+
+
+
 nav a.router-link-exact-active {
   color: var(--color-text);
 }
@@ -33,7 +38,6 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
   }
 }
