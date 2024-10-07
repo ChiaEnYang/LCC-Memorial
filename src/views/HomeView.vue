@@ -1,18 +1,20 @@
 <script>
 import banner from "@/components/banner.vue";
-import AboutCards from "@/components/aboutCards.vue";
-import info from "@/components/info.vue";
-import model from "@/components/model.vue";
 import artist from "@/components/artist.vue";
+import AboutCards from "@/components/aboutCards.vue";
+import painting from "@/components/painting.vue";
+import info from "@/components/info.vue";
+
+
 
 
 export default {
   components: {
     banner,
+    artist,
     AboutCards,
+    painting,
     info,
-    model,
-    artist
   }
 }
 </script>
@@ -24,7 +26,7 @@ export default {
     <artist />
     <AboutCards />
 
-    <model />
+    <painting />
   </main>
   <footer>
     <info />
