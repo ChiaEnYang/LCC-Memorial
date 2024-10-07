@@ -1,8 +1,9 @@
 <script>
 import banner from "@/components/banner.vue";
 import artist from "@/components/artist.vue";
-import AboutCards from "@/components/aboutCards.vue";
-import painting from "@/components/painting.vue";
+import AboutCards from "@/components/AboutCards.vue";
+import gluepainting from "@/components/gluepainting.vue";
+import work from "@/components/work.vue";
 import info from "@/components/info.vue";
 
 
@@ -13,7 +14,8 @@ export default {
     banner,
     artist,
     AboutCards,
-    painting,
+    gluepainting,
+    work,
     info,
   }
 }
@@ -24,9 +26,10 @@ export default {
     <banner />
 
     <artist />
-    <AboutCards />
 
-    <painting />
+    <gluepainting/>
+    
+    <work />
   </main>
   <footer>
     <info />
