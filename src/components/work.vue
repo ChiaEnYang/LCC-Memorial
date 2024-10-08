@@ -83,7 +83,7 @@
 
 .swiper-slide {
   background-position: center;
-  background-size: conver;
+  background-size: cover;
   width: 300px;
   height: 300px;
 }
