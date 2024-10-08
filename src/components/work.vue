@@ -43,8 +43,8 @@
         ><img src="https://swiperjs.com/demos/images/nature-9.jpg"
       /></swiper-slide>
     </swiper>
-  </template>
-  <script>
+</template>
+<script>
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide } from 'swiper/vue';
   
@@ -54,6 +54,8 @@
     import 'swiper/css/effect-coverflow';
     import 'swiper/css/pagination';
   
+    
+
     
   
     // import required modules
@@ -70,23 +72,8 @@
         };
       },
     };
-  </script>
-  <style scoped>
-  #app { height: 100% }
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
+</script>
+<style scoped>
 
 .swiper {
   width: 100%;
@@ -96,7 +83,7 @@ body {
 
 .swiper-slide {
   background-position: center;
-  background-size: cover;
+  background-size: conver;
   width: 300px;
   height: 300px;
 }
@@ -104,6 +91,7 @@ body {
 .swiper-slide img {
   display: block;
   width: 100%;
+  height: 300px;
 }
 
   </style>
