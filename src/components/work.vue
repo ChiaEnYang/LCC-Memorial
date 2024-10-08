@@ -13,35 +13,10 @@
       }"
       :pagination="true"
       :modules="modules"
-      class="mySwiper"
-    >
-      <swiper-slide
-        ><img
-          src="../img/春雨.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="../img/秋果.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="../img/梅花.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="https://swiperjs.com/demos/images/nature-4.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="https://swiperjs.com/demos/images/nature-5.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="https://swiperjs.com/demos/images/nature-6.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="https://swiperjs.com/demos/images/nature-7.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img
-          src="https://swiperjs.com/demos/images/nature-8.jpg" /></swiper-slide
-      ><swiper-slide
-        ><img src="https://swiperjs.com/demos/images/nature-9.jpg"
-      /></swiper-slide>
+      class="mySwiper">
+      <swiper-slide><img src="../img/春雨.jpg" /></swiper-slide>
+      <swiper-slide><img src="../img/秋果.jpg" /></swiper-slide>
+      <swiper-slide><img src="../img/梅花.jpg" /></swiper-slide>
     </swiper>
 </template>
 <script>
@@ -94,5 +69,5 @@
   height: 300px;
 }
 
-  </style>
+</style>
   
