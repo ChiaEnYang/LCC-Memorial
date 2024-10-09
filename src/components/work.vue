@@ -20,7 +20,7 @@
           @click="selectPainting(painting)"><img :src="painting.src" :alt="painting.title" /></swiper-slide>
     </swiper>
 
-    <div id="selected-painting" v-if="selectedPainting" class=" z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-md">
+    <div id="selected-painting" v-if="selectedPainting" class=" z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-md" @click="deletePainting(painting)">
       <h2>{{ selectedPainting.title }}</h2>
       <p>{{ selectedPainting.description }}</p>
       <img class="w-full h-auto "  :src="selectedPainting.src" alt="選擇的畫作" />
@@ -73,6 +73,9 @@
     selectPainting(painting) {
       this.selectedPainting = painting;
     },
+    deletePainting(painting){
+      this.selectedPainting = null;
+    }
   },
   mounted() {
     
