@@ -1,16 +1,20 @@
 <script>
 import banner from "@/components/banner.vue";
-import AboutCards from "@/components/aboutCards.vue";
+import artist from "@/components/artist.vue";
+import gluepainting from "@/components/gluepainting.vue";
+import work from "@/components/work.vue";
 import info from "@/components/info.vue";
-import model from "@/components/model.vue";
-import AboutCards from "@/components/aboutCards.vue";
+
+
+
 
 export default {
   components: {
     banner,
-    AboutCards,
+    artist,
+    gluepainting,
+    work,
     info,
-    model
   }
 }
 </script>
@@ -18,8 +22,12 @@ export default {
 <template >
   <main class="container mx-auto pt-20">
     <banner />
-    <AboutCards />
-    <model />
+
+    <artist />
+
+    <gluepainting/>
+    
+    <work />
   </main>
   <footer>
     <info />

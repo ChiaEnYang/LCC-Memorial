@@ -7,11 +7,12 @@ export default {
   theme: {
     extend: {
       animation: {
-        'nav-up': 'navUp 1s linear forwards',
+        'nav-up': 'navUp 2s linear forwards',
       },
       keyframes: {
         navUp: {
           '0%': { height: '100vh' , backgroundColor: 'rgba(29, 90, 83, 1)'},
+          '90%': { height: '100px' , backgroundColor: 'rgba(29, 90, 83, 1)'},
           '100%': { height: '100px', backgroundColor: 'rgba(29, 90, 83, 0.7)' },
         },
       },
