@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
 
-  <nav class="fixed w-full h-[100px] flex justify-center p-5 bg-[#1d5a53]  z-20 animate-nav-up">
+  <nav class="fixed w-full h-[100px] flex justify-center p-5 bg-transparent z-20 animate-nav-up">
     <RouterLink to="/">
       <img src="/src/img/logo.png" alt="" class="min-w-48 h-10 shrink-0 z-20">
     </RouterLink>

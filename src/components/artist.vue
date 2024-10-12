@@ -68,7 +68,7 @@ export default {
             onDown: () => masterTL.reverse(),
             onEnable(self) {
                 let savedScroll = self.scrollY();
-                self._restoreScroll = (e) => self.scrollY(savedScroll);
+                self._restoreScroll = () => self.scrollY(savedScroll);
                 document.addEventListener("scroll", self._restoreScroll, { passive: false });
             },
             onDisable(self) {
