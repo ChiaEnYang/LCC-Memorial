@@ -1,5 +1,5 @@
 <template>
-  <div class="work">數位典藏
+  <div class="work relative">數位典藏
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
@@ -20,10 +20,14 @@
           @click="selectPainting(painting)"><img :src="painting.src" :alt="painting.title" /></swiper-slide>
     </swiper>
 
-    <div id="selected-painting" v-if="selectedPainting" class=" z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-md" @click="deletePainting(painting)">
-      <h2>{{ selectedPainting.title }}</h2>
-      <p>{{ selectedPainting.description }}</p>
-      <img class="w-full h-auto "  :src="selectedPainting.src" alt="選擇的畫作" />
+    <div id="selected-painting" v-if="selectedPainting" class=" z-20 shadow-md w-auto h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
+      
+      <img class="w-auto h-full "  :src="selectedPainting.src" alt="選擇的畫作" />
+      <div class="w-[600px] h-full bg-slate-400 flex flex-col justify-center items-center">
+        <h2 class="font-bold mb-3">{{ selectedPainting.title }}</h2>
+        <p class="w-auto">{{ selectedPainting.description }}</p>
+      </div>
+   
     </div>
   </div>
 </template>
