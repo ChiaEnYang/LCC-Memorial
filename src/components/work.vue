@@ -1,5 +1,6 @@
 <template>
-  <div class="work relative">數位典藏
+  <div class="work  relative">
+    <p class="text-5xl font-bold">數位典藏</p>
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
@@ -14,16 +15,16 @@
       }"
       :pagination="true"
       :modules="modules"
-      class="mySwiper">
-      <swiper-slide class="select-none" v-for="painting in paintings" 
+      class="mySwiper ">
+      <swiper-slide class="select-none " v-for="painting in paintings" 
           :key="painting.src" 
-          @click="selectPainting(painting)"><img :src="painting.src" :alt="painting.title" /></swiper-slide>
+          @click="selectPainting(painting)"><img class="rounded-md":src="painting.src" :alt="painting.title" /></swiper-slide>
     </swiper>
 
-    <div id="selected-painting" v-if="selectedPainting" class=" z-20 shadow-md w-auto h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
+    <div id="selected-painting" v-if="selectedPainting" class=" z-20 w-full h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
       
-      <img class="w-auto h-full "  :src="selectedPainting.src" alt="選擇的畫作" />
-      <div class="w-[600px] h-full bg-slate-400 flex flex-col justify-center items-center">
+      <img class="w-auto h-full"  :src="selectedPainting.src" alt="選擇的畫作" />
+      <div class="w-[300px] h-full bg-slate-400 flex flex-col justify-center items-center text-center">
         <h2 class="font-bold mb-3">{{ selectedPainting.title }}</h2>
         <p class="w-auto">{{ selectedPainting.description }}</p>
       </div>
@@ -108,6 +109,7 @@ border-radius: 50%;
 display: block;
 width: 100%;
 height: 300px;
+
 
 }
 
