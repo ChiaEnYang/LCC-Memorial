@@ -1,5 +1,6 @@
 <template>
   <div class="work  relative">
+    <div id="model" ref="sceneContainer"></div>
     <p class="text-5xl font-bold">數位典藏</p>
     <swiper
       :effect="'coverflow'"
@@ -44,6 +45,10 @@
   // import required modules
   import { EffectCoverflow, Pagination } from 'swiper/modules';
 
+  //model
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
   export default {
     components: {
       Swiper,
@@ -80,9 +85,62 @@
     },
     deletePainting(painting){
       this.selectedPainting = null;
+    },
+    Model() {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 0, 5); // 設定攝影機的位置
+
+         
+      //渲染
+      const model = document.querySelector('#model');
+      const renderer = new THREE.WebGLRenderer({ alpha: true });  //渲染透明色
+      renderer.setSize(model.clientWidth, model.clientHeight);             
+      this.$refs.sceneContainer.appendChild(renderer.domElement);
+            
+      function resize() {
+      renderer.setSize(model.clientWidth, model.clientHeight);
+      camera.aspect = model.clientWidth / model.clientHeight;
+      camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', resize);
+      resize(); // 初始調用
+      //-----------------------------------------------
+      scene.background = null;   //背景空白
+      const light = new THREE.AmbientLight(0xFFFFFF,3); // 環境光
+      scene.add(light);
+      //----------------------------------------------
+
+      const object = new THREE.Object3D();
+      const loader = new GLTFLoader();
+
+      loader.load('src/model/pan.glb', function (gltf) {
+        
+        console.log(gltf);
+        object.add(gltf.scene);
+        object.position.set(0, 0, 0);
+        object.scale.set(1, 1, 1);
+
+        scene.add(object);
+
+                
+      }, undefined, function (error) {
+
+        console.error(error);
+
+      });
+      //-----------------------------------------------------------
+      function animate() {              
+        camera.lookAt(object.position);
+        renderer.render(scene, camera);
+
+        }
+        renderer.setAnimationLoop(animate);
+
     }
   },
   mounted() {
+    this.Model()
     
   },
        
@@ -109,8 +167,12 @@ border-radius: 50%;
 display: block;
 width: 100%;
 height: 300px;
+}
 
-
+#model {
+  width: 50px;
+  height: 50px;
+   
 }
 
 
