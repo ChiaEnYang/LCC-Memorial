@@ -108,12 +108,13 @@ export default {
 </script>
 
 <template>
-    <div ref="threeCanvas" class="shelf w-full h-screen">
+    <div class="w-full h-screen">
+        <div id="shelf" ref="threeCanvas"></div>
     </div>
 </template>
 
 <style scoped>
-.shelf {
+#shelf {
     width: 100%;
     height: 100vh;
     overflow: hidden;
