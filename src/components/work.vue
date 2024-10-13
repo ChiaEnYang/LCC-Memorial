@@ -1,7 +1,6 @@
 <template>
   <div class="work  relative">
-    <div id="model" ref="sceneContainer"></div>
-    <p class="text-5xl font-bold">數位典藏</p>
+    <p class="text-5xl font-bold flex">數位典藏<div id="model" ref="sceneContainer"></div></p>
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
@@ -130,7 +129,10 @@
 
       });
       //-----------------------------------------------------------
-      function animate() {              
+      function animate() {   
+        object.rotation.y += 0.001;   
+        object.rotation.z += 0.001; 
+        
         camera.lookAt(object.position);
         renderer.render(scene, camera);
 
