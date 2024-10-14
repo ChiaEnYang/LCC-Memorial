@@ -32,6 +32,15 @@ export default {
 
             renderer.setSize(this.$refs.threeCanvas.clientWidth, this.$refs.threeCanvas.clientHeight);
             this.$refs.threeCanvas.appendChild(renderer.domElement);
+            
+            const model = document.querySelector('#shelf');
+            function resize() {
+            renderer.setSize(model.clientWidth, model.clientHeight);
+            camera.aspect = model.clientWidth / model.clientHeight;
+            camera.updateProjectionMatrix();
+            }
+            window.addEventListener('resize', resize);
+            resize(); // 初始調用
 
             const allLight = new THREE.AmbientLight(0x404040, 10);
             scene.add(allLight); 
