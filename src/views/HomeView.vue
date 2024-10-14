@@ -4,6 +4,7 @@ import artist from "@/components/artist.vue";
 import gluepainting from "@/components/gluepainting.vue";
 import work from "@/components/work.vue";
 import info from "@/components/info.vue";
+import character from "@/components/character.vue";
 
 
 
@@ -11,6 +12,7 @@ import info from "@/components/info.vue";
 export default {
   components: {
     banner,
+    character,
     artist,
     gluepainting,
     work,
@@ -21,6 +23,7 @@ export default {
 
 <template >
   <main class="container mx-auto pt-20">
+    <character/>
     <banner />
 
     <artist />
