@@ -42,8 +42,11 @@ export default{
             <h1 class="mb-5 text-4xl text-center">{{ title }}</h1>
             <h3 class="text-center whitespace-pre-line">{{ subTitle }}</h3>
             <!-- 漂浮的圖片 -->
-            <div class="absolute top-0 left-0 w-10 h-auto">
-            </div>
+             <img src="../img/bird1.PNG" alt="" class="absolute w-10 h-auto opacity-0 animate-floating">
+             <img src="../img/bird1.PNG" alt="" class="absolute w-10 h-auto opacity-0 animate-[floating_5s_1s_linear_infinite]">
+             <img src="../img/bird1.PNG" alt="" class="absolute w-10 h-auto opacity-0 animate-[floating_5s_2s_linear_infinite]">
+             <img src="../img/bird1.PNG" alt="" class="absolute w-10 h-auto opacity-0 animate-[floating_5s_3s_linear_infinite]">
+             <img src="../img/bird1.PNG" alt="" class="absolute w-10 h-auto opacity-0 animate-[floating_5s_4s_linear_infinite]">
         </div>
     </div>
 </template>
