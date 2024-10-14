@@ -1,5 +1,6 @@
 <template>
-  <div class="work relative">數位典藏
+  <div class="work  relative">
+    <div class="text-5xl font-bold flex">數位典藏<div id="model" ref="sceneContainer"></div></div>
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
@@ -14,16 +15,16 @@
       }"
       :pagination="true"
       :modules="modules"
-      class="mySwiper">
-      <swiper-slide class="select-none" v-for="painting in paintings" 
+      class="mySwiper ">
+      <swiper-slide class="select-none " v-for="painting in paintings" 
           :key="painting.src" 
-          @click="selectPainting(painting)"><img :src="painting.src" :alt="painting.title" /></swiper-slide>
+          @click="selectPainting(painting)"><img class="rounded-md":src="painting.src" :alt="painting.title" /></swiper-slide>
     </swiper>
 
-    <div id="selected-painting" v-if="selectedPainting" class=" z-20 shadow-md w-auto h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
+    <div id="selected-painting" v-if="selectedPainting" class=" z-20 w-full h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
       
-      <img class="w-auto h-full "  :src="selectedPainting.src" alt="選擇的畫作" />
-      <div class="w-[600px] h-full bg-slate-400 flex flex-col justify-center items-center">
+      <img class="w-auto h-full"  :src="selectedPainting.src" alt="選擇的畫作" />
+      <div class="w-[300px] h-full bg-orange-50 flex flex-col justify-center items-center text-center">
         <h2 class="font-bold mb-3">{{ selectedPainting.title }}</h2>
         <p class="w-auto">{{ selectedPainting.description }}</p>
       </div>
@@ -42,6 +43,10 @@
   import 'swiper/css/pagination';
   // import required modules
   import { EffectCoverflow, Pagination } from 'swiper/modules';
+
+  //model
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
   export default {
     components: {
@@ -79,9 +84,65 @@
     },
     deletePainting(painting){
       this.selectedPainting = null;
+    },
+    Model() {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.set(0, 0, 5); // 設定攝影機的位置
+
+         
+      //渲染
+      const model = document.querySelector('#model');
+      const renderer = new THREE.WebGLRenderer({ alpha: true });  //渲染透明色
+      renderer.setSize(model.clientWidth, model.clientHeight);             
+      this.$refs.sceneContainer.appendChild(renderer.domElement);
+            
+      function resize() {
+      renderer.setSize(model.clientWidth, model.clientHeight);
+      camera.aspect = model.clientWidth / model.clientHeight;
+      camera.updateProjectionMatrix();
+      }
+      window.addEventListener('resize', resize);
+      resize(); // 初始調用
+      //-----------------------------------------------
+      scene.background = null;   //背景空白
+      const light = new THREE.AmbientLight(0xFFFFFF,3); // 環境光
+      scene.add(light);
+      //----------------------------------------------
+
+      const object = new THREE.Object3D();
+      const loader = new GLTFLoader();
+
+      loader.load('src/model/pan.glb', function (gltf) {
+        
+        console.log(gltf);
+        object.add(gltf.scene);
+        object.position.set(0, 0, 0);
+        object.scale.set(1, 1, 1);
+
+        scene.add(object);
+
+                
+      }, undefined, function (error) {
+
+        console.error(error);
+
+      });
+      //-----------------------------------------------------------
+      function animate() {   
+        object.rotation.y += 0.001;   
+        object.rotation.z += 0.001; 
+        
+        camera.lookAt(object.position);
+        renderer.render(scene, camera);
+
+        }
+        renderer.setAnimationLoop(animate);
+
     }
   },
   mounted() {
+    this.Model()
     
   },
        
@@ -108,7 +169,12 @@ border-radius: 50%;
 display: block;
 width: 100%;
 height: 300px;
+}
 
+#model {
+  width: 50px;
+  height: 50px;
+   
 }
 
 
