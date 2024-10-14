@@ -1,6 +1,6 @@
 <template>
   <div class="work  relative">
-    <p class="text-5xl font-bold flex">數位典藏<div id="model" ref="sceneContainer"></div></p>
+    <div class="text-5xl font-bold flex">數位典藏<div id="model" ref="sceneContainer"></div></div>
     <swiper
       :effect="'coverflow'"
       :grabCursor="true"
@@ -24,7 +24,7 @@
     <div id="selected-painting" v-if="selectedPainting" class=" z-20 w-full h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
       
       <img class="w-auto h-full"  :src="selectedPainting.src" alt="選擇的畫作" />
-      <div class="w-[300px] h-full bg-slate-400 flex flex-col justify-center items-center text-center">
+      <div class="w-[300px] h-full bg-orange-50 flex flex-col justify-center items-center text-center">
         <h2 class="font-bold mb-3">{{ selectedPainting.title }}</h2>
         <p class="w-auto">{{ selectedPainting.description }}</p>
       </div>
