@@ -11,7 +11,7 @@ export default {
             targetRotation: 0, // 模型目標角度（正面朝前）
             inSection: false, // 是否已經進入指定區域
             totalScroll: 0, // 總滾動距離
-            maxScroll: 300, // 最大滾動距離，滾動超過該值模型會完全轉到前面
+            maxScroll: 200, // 最大滾動距離，滾動超過該值模型會完全轉到前面
         };
     },
     mounted() {
@@ -25,14 +25,18 @@ export default {
         initThree() {
             const scene = new THREE.Scene();
             scene.background = new THREE.Color(0xffffff);
+
             const camera = new THREE.PerspectiveCamera(75, this.$refs.threeCanvas.clientWidth / this.$refs.threeCanvas.clientHeight, 0.1, 1000);
-            camera.position.set(0, 10, 300);
+            // const camera = new THREE.OrthographicCamera( this.$refs.threeCanvas.clientWidth / - 3,this.$refs.threeCanvas.clientWidth / 3, this.$refs.threeCanvas.clientHeight / 3, this.$refs.threeCanvas.clientHeight / - 3, 1, 1000 );
+            // camera.position.set(0, 0, 0);
+            camera.position.set(0, 0, 300);
 
             const renderer = new THREE.WebGLRenderer();
 
             renderer.setSize(this.$refs.threeCanvas.clientWidth, this.$refs.threeCanvas.clientHeight);
             this.$refs.threeCanvas.appendChild(renderer.domElement);
             
+            //模型跟著rwd
             const model = document.querySelector('#shelf');
             function resize() {
             renderer.setSize(model.clientWidth, model.clientHeight);
@@ -45,21 +49,27 @@ export default {
             const allLight = new THREE.AmbientLight(0x404040, 10);
             scene.add(allLight); 
 
-            const light = new THREE.DirectionalLight(0xffffff, 1);
-            light.position.set(0, 10, 100).normalize();
+            // const light = new THREE.DirectionalLight(0xffffff, 1);
+            // light.position.set(0, 0, 200).normalize();
+            const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 2 );
             scene.add(light);
 
             const loader = new GLTFLoader();
             let shelf = new THREE.Object3D();
             loader.load('src/model/COLORSHELF2.glb',
                 (item) => {
+                    const box = new THREE.Box3().setFromObject(item.scene);
+                    const center = box.getCenter(new THREE.Vector3());
+                    item.scene.position.sub(center);
+
                     shelf.add(item.scene);
                     this.shelf = shelf;  // 將模型儲存到 data 中
                 }, undefined, function (error) {
                     console.error(error);
                 });
 
-            shelf.position.set(0, -50, 0);
+            // shelf.position.set(0, -50, 0);
+            shelf.position.set(0, 80, 0);
             shelf.scale.set(80, 80, 80);
 
             scene.add(shelf);
@@ -70,18 +80,18 @@ export default {
 
                 if (this.shelf && this.inSection) {
                     const rotationProgress = this.totalScroll / this.maxScroll;
-                    this.currentRotation = Math.PI * (1 - rotationProgress); // 旋轉進度從背面到正面
+                    this.currentRotation = Math.PI * (1 - rotationProgress) ; // 旋轉進度從背面到正面
                     if (this.currentRotation < this.targetRotation) {
                         this.currentRotation = this.targetRotation;
                     }
                     this.shelf.rotation.y = this.currentRotation;
                 };
-
                 renderer.render(scene, camera);
             };
 
             animate();
         },
+
         setupScrollObserver() {
             const section = this.$refs.threeCanvas;  // 使用 Vue 的 ref
             const observer = new IntersectionObserver((entries) => {
@@ -98,10 +108,15 @@ export default {
 
             observer.observe(section);
         },
+
         handleWheel(event) {
             if (this.inSection) {
                 // 根據滾輪滾動的方向來調整總滾動距離
                 const deltaY = event.deltaY;
+                // console.log(deltaY);
+                // console.log(event.position);
+                
+                
                 this.totalScroll += deltaY;
 
                 // 確保滾動距離在範圍內
@@ -118,7 +133,7 @@ export default {
 
 <template>
     <div class="w-full h-screen">
-        <div id="shelf" ref="threeCanvas"></div>
+        <div id="shelf" ref="threeCanvas" class="opacity-70"></div>
     </div>
 </template>
 
