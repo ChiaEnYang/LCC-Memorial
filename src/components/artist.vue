@@ -107,7 +107,7 @@ export default {
 <template>
     <!-- 
      把區塊切成左右兩格，右邊留給雕像 -->
-    <div id="artist-section" class="w-[90%] h-dvh grid grid-cols-2">
+    <div id="artist-section" class="w-[90%] h-dvh mx-auto grid grid-cols-2 gap-0">
         <!-- 
         文字區 -->
         <div class="border flex flex-col items-center">
@@ -119,5 +119,6 @@ export default {
                 </div>
             </div>
         </div>
+        <div class="border">另一邊</div>
     </div>
 </template>
