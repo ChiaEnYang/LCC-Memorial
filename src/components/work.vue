@@ -18,7 +18,7 @@
       class="mySwiper ">
       <swiper-slide class="select-none " v-for="painting in paintings" 
           :key="painting.src" 
-          @click="selectPainting(painting)"><img class="rounded-md":src="painting.src" :alt="painting.title" /></swiper-slide>
+          @click="selectPainting(painting)"><img class="rounded-md" :src="painting.src" :alt="painting.title" /></swiper-slide>
     </swiper>
 
     <div id="selected-painting" v-if="selectedPainting" class=" z-20 w-full h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center" @click="deletePainting(painting)">
